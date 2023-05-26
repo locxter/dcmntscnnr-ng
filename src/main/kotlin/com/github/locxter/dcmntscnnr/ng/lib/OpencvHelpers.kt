@@ -59,28 +59,8 @@ class OpencvHelpers {
             }
         }
 
-        // Function to capture a raw picture form a camera
-        fun captureRawPicture(camera: VideoCapture): Mat {
-            val rawFrame = Mat()
-            // Clean the buffer and read a frame
-            camera.grab()
-            camera.read(rawFrame)
-            if (rawFrame.empty()) {
-                error("Blank frame grabbed")
-            }
-            return rawFrame
-        }
-
-        // Function to capture an undistorted picture form a camera
-        fun capturePicture(camera: VideoCapture, cameraMatrix: Mat, distCoeffs: Mat): Mat {
-            val rawFrame = captureRawPicture(camera)
-            val undistortedFrame = Mat()
-            Calib3d.undistort(rawFrame, undistortedFrame, cameraMatrix, distCoeffs)
-            return undistortedFrame
-        }
-
         // Function to save a picture to disk
-        fun savePicture(image: Mat, filename: String) {
+        fun saveImage(image: Mat, filename: String) {
             var counter = 0
             var fullFilename = "$filename-$counter.jpeg"
             while (File(fullFilename).exists()) {
