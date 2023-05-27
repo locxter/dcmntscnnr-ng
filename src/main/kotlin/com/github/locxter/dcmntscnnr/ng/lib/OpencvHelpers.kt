@@ -35,7 +35,7 @@ class OpencvHelpers {
             val maxWidth = 1920.0
             val maxHeight = 1080.0
             val buffer: Mat
-            // Resize the image to fit inside the 1280 by 720 bounding box if needed
+            // Resize the image to fit inside the bounding box if needed
             if (image.cols() > maxWidth || image.rows() > maxHeight) {
                 val scale: Double = if (image.cols() > image.rows()) {
                     maxWidth / image.cols()
