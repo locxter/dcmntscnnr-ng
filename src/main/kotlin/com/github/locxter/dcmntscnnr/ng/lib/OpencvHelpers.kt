@@ -15,6 +15,8 @@ import java.awt.Image as AwtImage
 
 class OpencvHelpers {
     companion object {
+        val displaySize = Size(1920.0, 1080.0)
+
         // Function to draw text on an image
         fun drawText(image: Mat, text: String): Mat {
             val buffer = image.clone()
@@ -32,15 +34,13 @@ class OpencvHelpers {
 
         // Function to show an image and wait for user response
         fun showImage(image: Mat, windowName: String) {
-            val maxWidth = 1920.0
-            val maxHeight = 1080.0
             val buffer: Mat
             // Resize the image to fit inside the bounding box if needed
-            if (image.cols() > maxWidth || image.rows() > maxHeight) {
+            if (image.cols() > displaySize.width || image.rows() > displaySize.height) {
                 val scale: Double = if (image.cols() > image.rows()) {
-                    maxWidth / image.cols()
+                    displaySize.width / image.cols()
                 } else {
-                    maxHeight / image.rows()
+                    displaySize.height / image.rows()
                 }
                 buffer = Mat()
                 Imgproc.resize(image, buffer, Size(), scale, scale)
