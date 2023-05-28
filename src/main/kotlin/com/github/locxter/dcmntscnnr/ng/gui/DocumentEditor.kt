@@ -25,26 +25,6 @@ class DocumentEditor() : JScrollPane() {
             }
             assemblePanel()
             field = value
-            /*
-            if (field.pages.size != value.pages.size) {
-                if (field.pages.size < value.pages.size) {
-                    // Add rows when currently too few exist
-                    for (i in field.pages.size until value.pages.size) {
-                        val inputRow = mutableListOf<JTextField>()
-                        pageEditors.add(PageEditor(value.pages[i]))
-                    }
-                } else {
-                    // Delete when currently to many exist
-                    pageEditors.subList(value.pages.size, field.pages.size).clear()
-                }
-                assemblePanel()
-            }
-            for (i in pageEditors.indices) {
-                pageEditors[i].page = value.pages[i]
-            }
-            field = value
-
-             */
         }
     private val pageEditors: MutableList<PageEditor> = mutableListOf()
     private val panel = JPanel()
